@@ -26,14 +26,14 @@ Required dependencies:
 
 
 Building the MAGIC bundle
-=========================
+-------------------------
 
 MAGIC employs an out-of-source build/install based on CMake.
 
 Make sure the ecbuild executable script is found ( `which ecbuild` ).
 
 ```bash
-# 1. Clone the MAGIC-bundle 
+# 1. Clone the MAGIC-bundle
 git clone https://github.com/aerorahul/magic-bundle.git
 cd magic-bundle
 
@@ -42,8 +42,7 @@ mkdir /path/to/build
 cd /path/to/build
 
 # 3. Run ecbuild:
-ecbuild /path/to/source
-    ecbuild /somewhere/to/store/source/code/magic-bundle
+ecbuild /path/to/magic-bundle
 
 # 4. Compile / Install
 make -j 10
@@ -57,14 +56,13 @@ Extra flags maybe added to `ecbuild` in step 3 to fine-tune configuration.
   * BIT:     Maximum optimisation while remaning bit-reproducible (`-O2 -g`)
   * RELEASE: Maximum optimisation (`-O3`)
 
-- ecbuild accepts all cmake flags, for example, compilers can be selected with:
-    `ecbuild -DCMAKE_CXX_COMPILER=/path/to/gcc-7.2/bin/g++ ${SRC}`
+- compilers can be selected with `-DCMAKE_CXX_COMPILER=/path/to/gcc-7.2/bin/g++`
 
-The `ecbuild` command in step 2 will clone all the source code for the JEDI and MAGIC project defined in the
-`CMakeLists.txt` in the bundle and the make command will build them all.
+The `ecbuild` command in step 3 will clone all the source code for the JEDI and MAGIC project defined in the
+`CMakeLists.txt` in the bundle and the make command in step 4 will build them all.
 
 Testing
-=======
+-------
 
 For testing (from build directory):
 
@@ -73,7 +71,7 @@ ctest
 ```
 
 Working with the code
-=====================
+---------------------
 
 The `CMakeLists.txt` file in this directory contains the list of the repositories included
 in the bundle and the branch to be used. The branch specified in the CMakeLists.txt is
