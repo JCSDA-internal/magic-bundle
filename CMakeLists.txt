@@ -34,9 +34,8 @@ ecbuild_add_option( FEATURE BUILD_FCKIT
                     DESCRIPTION "download and build fckit (not needed if loaded by module or in a JEDI container)" )
 
 ecbuild_add_option( FEATURE BUILD_ATLAS
-                    DEFAULT ON
+                    DEFAULT OFF
                     DESCRIPTION "download and build atlas (not needed if loaded by module or in a JEDI container)" )
-
 
 if( BUILD_ECKIT )
   ecbuild_bundle( PROJECT eckit GIT "https://github.com/JCSDA/eckit.git" UPDATE BRANCH develop )
