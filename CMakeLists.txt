@@ -27,17 +27,34 @@ ecbuild_requires_macro_version( 2.7 )
 
 ecbuild_add_option( FEATURE BUILD_ECKIT
                     DEFAULT OFF
-                    DESCRIPTION "download and build eckit (not needed if in a jedi container)" )
+                    DESCRIPTION "download and build eckit (not needed if loaded by module or in a JEDI container)" )
+
+ecbuild_add_option( FEATURE BUILD_FCKIT
+                    DEFAULT OFF
+                    DESCRIPTION "download and build fckit (not needed if loaded by module or in a JEDI container)" )
+
+ecbuild_add_option( FEATURE BUILD_ATLAS
+                    DEFAULT ON
+                    DESCRIPTION "download and build atlas (not needed if loaded by module or in a JEDI container)" )
+
+
 if( BUILD_ECKIT )
   ecbuild_bundle( PROJECT eckit GIT "https://github.com/JCSDA/eckit.git" UPDATE BRANCH develop )
 endif()
 
-ecbuild_bundle( PROJECT fckit GIT "https://github.com/JCSDA/fckit.git" UPDATE BRANCH develop )
-ecbuild_bundle( PROJECT atlas GIT "https://github.com/JCSDA/atlas.git" UPDATE BRANCH develop )
+if( BUILD_FCKIT )
+  ecbuild_bundle( PROJECT fckit GIT "https://github.com/JCSDA/fckit.git" UPDATE BRANCH develop )
+endif()
+
+if( BUILD_ATLAS )
+  ecbuild_bundle( PROJECT atlas GIT "https://github.com/JCSDA/atlas.git" UPDATE BRANCH develop )
+endif()
+
 ecbuild_bundle( PROJECT saber GIT "https://github.com/JCSDA/saber.git" UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT oops  GIT "https://github.com/JCSDA/oops.git"  UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT ioda  GIT "https://github.com/JCSDA/ioda.git"  UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT ufo   GIT "https://github.com/JCSDA/ufo.git"   UPDATE BRANCH develop )
-ecbuild_bundle( PROJECT magic GIT "https://github.com/JCSDA/magic.git" UPDATE BRANCH develop )
+
+ecbuild_bundle( PROJECT magic GIT "https://github.com/aerorahul/magic.git" UPDATE BRANCH develop )
 
 ecbuild_bundle_finalize()
