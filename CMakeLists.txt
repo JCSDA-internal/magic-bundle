@@ -27,28 +27,19 @@ ecbuild_requires_macro_version( 2.7 )
 #                    DEFAULT ON
 #                    DESCRIPTION "Use OpenMP" )
 
-ecbuild_add_option( FEATURE BUILD_ECKIT
-                    DEFAULT OFF
-                    DESCRIPTION "download and build eckit (not needed if loaded by module or in a JEDI container)" )
-
-ecbuild_add_option( FEATURE BUILD_FCKIT
-                    DEFAULT OFF
-                    DESCRIPTION "download and build fckit (not needed if loaded by module or in a JEDI container)" )
-
-ecbuild_add_option( FEATURE BUILD_ATLAS
-                    DEFAULT OFF
-                    DESCRIPTION "download and build atlas (not needed if loaded by module or in a JEDI container)" )
-
-if( BUILD_ECKIT )
-  ecbuild_bundle( PROJECT eckit GIT "https://github.com/ecmwf/eckit.git" UPDATE TAG 1.16.0)
+find_package( eckit QUIET 1.16.0 )
+if( NOT eckit_FOUND )
+  ecbuild_bundle( PROJECT eckit GIT "https://github.com/ecmwf/eckit.git" UPDATE TAG 1.16.0 )
 endif()
 
-if( BUILD_FCKIT )
-  ecbuild_bundle( PROJECT fckit GIT "https://github.com/ecmwf/fckit.git" UPDATE TAG 0.9.2)
+find_package( fckit QUIET 0.9.2  )
+if( NOT fckit_FOUND )
+  ecbuild_bundle( PROJECT fckit GIT "https://github.com/ecmwf/fckit.git" UPDATE TAG 0.9.2 )
 endif()
 
-if( BUILD_ATLAS )
-  ecbuild_bundle( PROJECT atlas GIT "https://github.com/ecmwf/atlas.git" UPDATE TAG 0.23.0)
+find_package( atlas QUIET 0.23.0 )
+if( NOT atlas_FOUND )
+  ecbuild_bundle( PROJECT atlas GIT "https://github.com/ecmwf/atlas.git" UPDATE TAG 0.23.0 )
 endif()
 
 ecbuild_bundle( PROJECT oops  GIT "https://github.com/JCSDA-Internal/oops.git"  UPDATE BRANCH develop )
