@@ -1,17 +1,16 @@
 # Ignore these files anywhere in the tree
-*.o
-*.a
+*.[aox]
 *.so
 *.mod
-*.x
 *.pyc
 *.v3breakpoints
-*.swp
+*.sw[a-p]
 *.sublime-workspace
 *~
 
 # Ignore the contents of these directories
 ecbuild/
+jedicmake/
 eckit/
 fckit/
 atlas/
@@ -22,5 +21,6 @@ ioda/
 ufo/
 magic/
 
-build/
-install/
+build*/
+install*/
+test*/
