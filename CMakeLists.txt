@@ -1,17 +1,17 @@
-# (C) COPYRIGHT 2019-2019.
+# (C) Copyright 2019-2021 NOAA/NWS/NCEP/EMC.
 #
-# THIS SOFTWARE IS LICENSED UNDER THE TERMS OF THE APACHE LICENCE VERSION 2.0
-# WHICH CAN BE OBTAINED AT HTTP://WWW.APACHE.ORG/LICENSES/LICENSE-2.0.
+# This software is licensed under the terms of the Apache Licence Version 2.0
+# which can be obtained at http://www.apache.org/licenses/license-2.0.
 
 #
-# MAGIC-BUNDLE
+# MAGIC bundle
 #
+
+cmake_minimum_required( VERSION 3.3.2 FATAL_ERROR )
 
 find_package( ecbuild 3.5 REQUIRED )
 
 project( magic-bundle VERSION 0.0.1 LANGUAGES C CXX Fortran )
-
-cmake_minimum_required( VERSION 3.3.2 FATAL_ERROR )
 
 list( APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
 include( ecbuild_bundle )
@@ -23,9 +23,11 @@ ecbuild_bundle_initialize()
 
 ecbuild_requires_macro_version( 2.7 )
 
-#ecbuild_add_option( FEATURE OMP
-#                    DEFAULT ON
-#                    DESCRIPTION "Use OpenMP" )
+ecbuild_add_option( FEATURE OMP
+                    DEFAULT OFF
+                    DESCRIPTION "Use OpenMP" )
+
+ecbuild_bundle( PROJECT jedicmake GIT "https://github.com/jcsda-internal/jedi-cmake.git" BRANCH develop UPDATE )
 
 find_package( eckit QUIET 1.16.0 )
 if( NOT eckit_FOUND )
@@ -45,8 +47,8 @@ endif()
 ecbuild_bundle( PROJECT oops  GIT "https://github.com/JCSDA-Internal/oops.git"  UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT saber GIT "https://github.com/JCSDA-Internal/saber.git" UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT ioda  GIT "https://github.com/JCSDA-Internal/ioda.git"  UPDATE BRANCH develop )
-#ecbuild_bundle( PROJECT ufo   GIT "https://github.com/JCSDA-Internal/ufo.git"   UPDATE BRANCH develop )
+ecbuild_bundle( PROJECT ufo   GIT "https://github.com/JCSDA-Internal/ufo.git"   UPDATE BRANCH develop )
 
-#ecbuild_bundle( PROJECT magic GIT "https://github.com/JCSDA-Internal/magic.git" UPDATE BRANCH develop )
+ecbuild_bundle( PROJECT magic GIT "https://github.com/JCSDA-Internal/magic.git" UPDATE BRANCH develop )
 
 ecbuild_bundle_finalize()
