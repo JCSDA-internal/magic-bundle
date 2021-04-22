@@ -49,6 +49,6 @@ ecbuild_bundle( PROJECT oops  GIT "https://github.com/JCSDA-Internal/oops.git"  
 #ecbuild_bundle( PROJECT ioda  GIT "https://github.com/JCSDA-Internal/ioda.git"  UPDATE BRANCH develop )
 #ecbuild_bundle( PROJECT ufo   GIT "https://github.com/JCSDA-Internal/ufo.git"   UPDATE BRANCH develop )
 
-ecbuild_bundle( PROJECT magic GIT "https://github.com/JCSDA-Internal/magic.git" UPDATE BRANCH feature/fields )
+ecbuild_bundle( PROJECT magic GIT "https://github.com/JCSDA-Internal/magic.git" UPDATE BRANCH feature/netcdfio )
 
 ecbuild_bundle_finalize()
